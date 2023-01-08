@@ -1,8 +1,9 @@
-import React, { useEffect, useState,useMemo } from 'react';
+import React, { useEffect, useState,useMemo, useCallback } from 'react';
 import Header from './components/Header';
 import image from "./assets/img.svg"
 import img2 from "./assets/img2.jpg"
 import List from "./components/List"
+import ClearButton from './components/ClearButton';
 
 function App() {
 
@@ -39,6 +40,14 @@ function App() {
 
 
   }
+
+  const handleClear=useCallback(()=>{
+ 
+    setSearch("");
+    setText("");
+
+
+  },[])
   useEffect(()=>{
 
    fetch("https://jsonplaceholder.typicode.com/users")
@@ -69,7 +78,11 @@ function App() {
   
       <input type="txt" name="txt" value={text} onChange={handleChange} style={{padding:"10px 150px",borderRadius:"10px"}} placeholder="Search Item:"/>
       <button type="submit" onClick={handleSearch} style={{background:"green",border:"none",padding:"20px",borderRadius:"10px",marginLeft:"20px"}}>Search</button>
+      <ClearButton handleClear={handleClear}/>
+    
     </div>
+
+   
    <List userList={filteredUsers}/>
    
     </div>
