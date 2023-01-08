@@ -7,7 +7,7 @@ const Header = (props) => {
   return (
     <div>
 
-     <img src={props.img} style={{width:"500px" }}/>
+     <img src={props.image} alt="img" style={{width:"500px",height:"400px" }}/>
 
     </div>
   )

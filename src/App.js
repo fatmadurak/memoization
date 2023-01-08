@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import Header from './components/Header';
-import img from "./assets/img.svg"
+import image from "./assets/img.svg"
+import img2 from "./assets/img2.jpg"
 
 
 function App() {
 
   const [count,setCount]=useState(0);
+  const[imgPath,setImgPath]=useState(image);
   console.log("App component rendered")
   const increase=()=>
   {
@@ -14,15 +16,21 @@ function App() {
 
   }
 
+  const changeImage=()=>{
+   
+    setImgPath(img2)
+
+  }
+
   return (
     <div>
      
-    <Header img={img}/>
+    <Header image={imgPath}/>
   
     <br/>
     count : {count}
     <button type="submit" onClick={increase}> Arttır </button>
-
+    <button onClick={changeImage}>Change Image</button>
    
 
     </div>
