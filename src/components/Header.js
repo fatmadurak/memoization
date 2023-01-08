@@ -1,12 +1,16 @@
-import React, { memo } from 'react';
+
+import React from 'react'
 
 const Header = (props) => {
-    console.log("Rendering:Header component");
-    return (
-        <div style={{ background: '#040404' }}>
-            <img src={props.imgPath} alt="hey logo" style={{ width: "100%", height: 200 }}></img>
-        </div>
-    )
+
+    console.log("header component rendered");
+  return (
+    <div>
+
+     <img src={props.img} style={{width:"500px" }}/>
+
+    </div>
+  )
 }
 
-export default memo(Header);
+export default React.memo(Header);
