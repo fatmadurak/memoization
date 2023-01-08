@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Header from './components/Header';
 import image from "./assets/img.svg"
 import img2 from "./assets/img2.jpg"
-
+import List from "./components/List"
 
 function App() {
 
@@ -49,7 +49,10 @@ function App() {
   },[])
 
 
- 
+ const filteredUsers=userList.filter(user=>{
+
+  return user.name.toLowerCase().includes(search.toLowerCase());
+ })
 
   return (
     <div>
@@ -61,10 +64,12 @@ function App() {
     <button type="submit" onClick={increase}> Arttır </button>
     <button onClick={changeImage}>Change Image</button>
    <hr/>
+   
 
    <input type="txt" name="txt" value={text} onChange={handleChange}/>
-   <button type="submit" onClick={handleSearch}>Search</button>
-
+   <button type="submit" onClick={handleSearch} style={{background:"green",border:"none",padding:"20px",borderRadius:"10px"}}>Search</button>
+   <List userList={filteredUsers}/>
+   
     </div>
   );
 }
