@@ -1,6 +1,8 @@
 import React from 'react'
 
 const List = ({userList}) => {
+
+    console.log("Renderen List item");
   return (
     <div>
 

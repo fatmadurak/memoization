@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState,useMemo } from 'react';
 import Header from './components/Header';
 import image from "./assets/img.svg"
 import img2 from "./assets/img2.jpg"
@@ -49,10 +49,10 @@ function App() {
   },[])
 
 
- const filteredUsers=userList.filter(user=>{
+ const filteredUsers=useMemo(()=>userList.filter(user=>{
 
   return user.name.toLowerCase().includes(search.toLowerCase());
- })
+ }),[search,userList])
 
   return (
     <div>
@@ -67,7 +67,7 @@ function App() {
    
     <div style={{ display:"flex",justifyContent:"center",alignItems:"center"}}>
   
-      <input type="txt" name="txt" value={text} onChange={handleChange} style={{padding:"10px 20px"}} placeholder="Search Item:"/>
+      <input type="txt" name="txt" value={text} onChange={handleChange} style={{padding:"10px 150px",borderRadius:"10px"}} placeholder="Search Item:"/>
       <button type="submit" onClick={handleSearch} style={{background:"green",border:"none",padding:"20px",borderRadius:"10px",marginLeft:"20px"}}>Search</button>
     </div>
    <List userList={filteredUsers}/>
